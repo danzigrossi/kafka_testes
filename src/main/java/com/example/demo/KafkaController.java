@@ -17,8 +17,13 @@ public class KafkaController {
         this.producer = producer;
     }
 
-    @PostMapping(value = "/publish")
+    @PostMapping(value = "/sprint_kafka")
     public void sendMessageToKafkaTopic(@RequestParam("message") String message) {
         producer.sendMessage(message);
+    }
+
+    @PostMapping(value = "/kafka_client")
+    public void sendMessageToKafkaTopic2(@RequestParam("message") String message) {
+        ProducerClient.runProducer(message);
     }
 }
